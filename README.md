@@ -8,8 +8,7 @@ Em desenvolvimento.
 
 - [x] Estrutura de pastas do projeto
 - [x] Modelagem do banco de dados (5 tabelas)
-- [x] Models: `users`, `posts`
-- [ ] Models: `comments`, `likes`, `follows`
+- [x] Models: `users`, `posts`, `comments`, `likes`, `follows`
 - [ ] Middlewares (autenticação, upload de imagem)
 - [ ] Controllers
 - [ ] Rotas
@@ -60,7 +59,7 @@ server.js             # ponto de entrada da aplicação
 
 1. Clone o repositório
 ```bash
-git remote add origin https://github.com/RuanF2/Post-.git
+git clone https://github.com/RuanF2/Post-
 cd post-plus
 ```
 
