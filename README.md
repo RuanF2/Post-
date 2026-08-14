@@ -9,8 +9,8 @@ Em desenvolvimento.
 - [x] Estrutura de pastas do projeto
 - [x] Modelagem do banco de dados (5 tabelas)
 - [x] Models: `users`, `posts`, `comments`, `likes`, `follows`
-- [ ] Middlewares (autenticação, upload de imagem)
-- [ ] Controllers
+- [x] Middleware de autenticação (verificação de JWT)
+- [ ] Controllers (`authController` em andamento — registro quase pronto, login pendente)
 - [ ] Rotas
 - [ ] Frontend
 - [ ] Deploy
