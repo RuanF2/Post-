@@ -1,7 +1,7 @@
 const pool = require('../config/database');
 
-async function CriarUsuario(nome, email, senhaHash){
-    const resultado = await pool.query('INSERT INTO users (nome, email, senhaHash) VALUES($1, $2, $3) RETURNING id, nome, email, criado_em', [nome, email, senhaHash]);
+async function criarUsuario(nome, email, senhaHash){
+    const resultado = await pool.query('INSERT INTO users (nome, email, senha_Hash) VALUES($1, $2, $3) RETURNING id, nome, email, criado_em', [nome, email, senhaHash]);
     const busca = resultado.rows[0];
     return busca;
 }
@@ -18,4 +18,4 @@ async function buscarPorId(id) {
     return busca;
 }
 
-module.exports = { CriarUsuario, buscarPorEmail, buscarPorId };
+module.exports = { criarUsuario, buscarPorEmail, buscarPorId };

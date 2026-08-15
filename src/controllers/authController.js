@@ -40,6 +40,7 @@ await userModel.criarUsuario(nome, email, hash);
  res.status(201).json({mensagem: 'Usuário recebido com sucesso'});
 
   }catch(erro){
+    console.log(erro);  
     res.status(500).json({mensagem: 'Erro ao registrar usuário'})
   }   
 }
@@ -71,3 +72,5 @@ async function login(req,res) {
     }
     
 }
+
+module.exports = { register, login };
