@@ -8,9 +8,9 @@ const pool = require('../config/database');
 async function register(req, res) {
     try{
         const {email, nome, senha} = req.body;
-    const tamanho = senha;
+        const tamanho = senha;
 
-    console.log(tamanho.length);
+        console.log(tamanho.length);
 
     if(tamanho.length < 8){
         res.status(400).json({mensagem:'A senha precisa ter no mínimo 8 caracteres'});
@@ -30,29 +30,29 @@ async function register(req, res) {
     console.log('E-mail recebido: ', email);
     console.log('Senha recebida: ', senha);
 
-     const saltRounds = 10;
+    const saltRounds = 10;
 
- const hash = await bcrypt.hash(senha, saltRounds);
- console.log(hash);
+    const hash = await bcrypt.hash(senha, saltRounds);
+    console.log(hash);
 
-await userModel.criarUsuario(nome, email, hash);
+    await userModel.criarUsuario(nome, email, hash);
 
- res.status(201).json({mensagem: 'Usuário recebido com sucesso'});
+    res.status(201).json({mensagem: 'Usuário recebido com sucesso'});
 
-  }catch(erro){
-    console.log(erro);  
-    res.status(500).json({mensagem: 'Erro ao registrar usuário'})
-  }   
+    }catch(erro){
+        console.log(erro);  
+        res.status(500).json({mensagem: 'Erro ao registrar usuário'})
+    }   
 }
 async function login(req,res) {
     try{
         const {email,senha} = req.body;
 
-    const usuarioExistente = await userModel.buscarPorEmail(email);
+        const usuarioExistente = await userModel.buscarPorEmail(email);
 
-    if(!usuarioExistente){
-        res.status(401).json({mensagem: 'Credenciais inválidas'});
-        return;
+        if(!usuarioExistente){
+            res.status(401).json({mensagem: 'Credenciais inválidas'});
+            return;
     }
     const verificacao = await bcrypt.compare(senha, usuarioExistente.senha_hash);
     if(verificacao === false){
