@@ -18,4 +18,11 @@ async function deletarComentario(id) {
     return busca;
 }
 
+async function buscarPorId(id) {
+    const resultado = await pool.query('SELECT * FROM comments WHERE id = $1', [id]);
+    const busca = resultado.rows[0];
+    return busca;
+    
+}
+
 module.exports = {criarComentario, listarPorPost, deletarComentario};

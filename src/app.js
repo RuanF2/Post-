@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const authRoutes = require('./routes/authRoutes')
+const postRoutes = require('./routes/postRoutes')
 
 const app = express();
 
@@ -15,5 +16,8 @@ app.use('/api/auth', authRoutes)
 app.get('/api/health', (req, res) => {
   res.json({ status: 'API rodando com sucesso' });
 });
+
+app.use('/api/posts', postRoutes);
+
 
 module.exports = app;
