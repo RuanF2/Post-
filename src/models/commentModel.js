@@ -25,4 +25,4 @@ async function buscarPorId(id) {
     
 }
 
-module.exports = {criarComentario, listarPorPost, deletarComentario};
+module.exports = {criarComentario, listarPorPost, deletarComentario, buscarPorId};
