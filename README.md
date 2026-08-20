@@ -13,7 +13,9 @@ Em desenvolvimento.
 - [x] `authController` (registro e login — testado)
 - [x] `postController` + `postRoutes` (CRUD completo de posts, com verificação de autoria — testado)
 - [x] `commentController` + `commentRoutes` (criar, listar por post, deletar — com verificação de autoria — testado)
-- [ ] Controllers e rotas: `likes`, `follows`
+- [ ] `likeController` (em andamento — toggleLike pronto, falta contarLikes)
+- [ ] Rotas de likes (`likeRoutes`)
+- [ ] Controller e rotas: `follows`
 - [ ] Frontend
 - [ ] Deploy
 
@@ -97,12 +99,8 @@ A API estará disponível em `http://localhost:3000`
 Ideias para depois que o Post+ nativo estiver completo (CRUD de posts, comments, likes, follows e frontend funcionando):
 
 - **Integração com TikTok e Instagram**: feed com abas (Post+ / TikTok / Instagram) permitindo ao usuário visualizar, dentro do Post+, publicações feitas nessas outras redes.
-  - Exigiria conexão via OAuth com cada plataforma (usuário autoriza explicitamente o acesso à própria conta)
+  - Exige conexão via OAuth com cada plataforma (usuário autoriza explicitamente o acesso à própria conta)
   - TikTok: via TikTok for Developers (Display API)
   - Instagram: via Instagram Graph API (Meta for Developers) — requer conta comercial/criador conectada a uma Página do Facebook
   - **Escopo definido**: exibição de conteúdo apenas. Curtidas dadas dentro do Post+ ficam registradas localmente (não sincronizam de volta para a plataforma de origem), já que TikTok e Instagram não permitem interações automatizadas de terceiros em nome do usuário
   - Requer cadastro de app e aprovação (review) em ambas as plataformas — processo que deve ser iniciado com antecedência
-
-## 👤 Autor
-
-Projeto desenvolvido por Mr.R como parte dos estudos em desenvolvimento full-stack, no curso de Tecnólogo em Inteligência Artificial.
