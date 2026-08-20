@@ -1,7 +1,7 @@
 const pool = require('../config/database');
 
 async function criarPost(user_id, conteudo, imagem_url) {
-    const resultado = await pool.query('INSERT INTO posts (user_id, conteudo, imagem_url) VALUES ($1, $2, $3)', [user_id, conteudo, imagem_url])
+    const resultado = await pool.query('INSERT INTO posts (user_id, conteudo, imagem_url) VALUES ($1, $2, $3) RETURNING id, user_id, conteudo, imagem_url, criado_em', [user_id, conteudo, imagem_url])
     const busca = resultado.rows[0];
     return busca;
 }
