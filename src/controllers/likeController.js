@@ -19,3 +19,17 @@ async function toggleLike(req, res) {
         res.status(400).json({mensagem: 'Erro ao dar like'});
     }
 }
+
+async function contarLikes(req, res) {
+    try{
+        const {post_id} = req.params;
+        const like = await likeModel.contarLikes(post_id);
+        res.status(200).json(like);
+        
+    }catch(erro){
+        res.status(400).json({mensagem: 'Like não contabilizado'})
+    }
+    
+}
+
+module.exports = { toggleLike, contarLikes };
