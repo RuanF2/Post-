@@ -26,3 +26,27 @@ async function toggleFollow(req, res){
         res.status(404).json({mensagem: 'Conta não encontrada'});
     }
 }
+
+async function listarSeguidores(req, res) {
+    try{
+        const {user_id} = req.params;
+        const listar = await followModel.listarSeguidores(user_id);
+        res.status(200).json(listar);
+
+    }catch(erro){
+        res.status(400).json({mensagem: 'Listagem mal sucedida'});
+    }
+}
+
+async function listarSeguindo(req, res) {
+    try{
+        const {user_id} = req.params;
+        const listar = await followModel.listarSeguindo(user_id);
+        res.status(200).json(listar);
+
+    }catch(erro){
+        res.status(400).json({mensagem: 'Listagem mal sucedida'});
+    }
+}
+
+module.exports = {toggleFollow, listarSeguidores, listarSeguindo};
