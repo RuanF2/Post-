@@ -2,9 +2,9 @@
 
 Rede social simplificada, desenvolvida como projeto de estudo full-stack, com foco em API REST, autenticação e modelagem de banco de dados relacional.
 
-## 🚧 Status do projeto
+## ✅ Status do projeto
 
-Em desenvolvimento.
+Backend completo e testado. Frontend em desenvolvimento.
 
 - [x] Estrutura de pastas do projeto
 - [x] Modelagem do banco de dados (5 tabelas)
@@ -13,8 +13,9 @@ Em desenvolvimento.
 - [x] `authController` (registro e login — testado)
 - [x] `postController` + `postRoutes` (CRUD completo de posts, com verificação de autoria — testado)
 - [x] `commentController` + `commentRoutes` (criar, listar por post, deletar — com verificação de autoria — testado)
-- [x] `likeController` + `likeRoutes` (toggle de curtir/descurtir, contagem de likes)
-- [ ] Controller e rotas: `follows`
+- [x] `likeController` + `likeRoutes` (toggle de curtir/descurtir, contagem de likes — testado)
+- [x] `followController` + `followRoutes` (toggle de seguir/deixar de seguir, validação de auto-seguir, listar seguidores/seguindo — testado)
+- [x] **Backend 100% funcional, testado ponta a ponta via Insomnia**
 - [ ] Frontend
 - [ ] Deploy
 
@@ -34,6 +35,35 @@ Em desenvolvimento.
 - Curtir/descurtir posts
 - Seguir/deixar de seguir outros usuários
 - Feed com posts ordenados por data
+
+## 🔌 Endpoints da API
+
+**Auth** (`/api/auth`)
+- `POST /register` — cadastro de usuário
+- `POST /login` — autenticação, retorna token JWT
+
+**Posts** (`/api/posts`)
+- `POST /` — criar post 🔒
+- `GET /feed` — listar todos os posts (mais recentes primeiro)
+- `GET /usuario/:user_id` — listar posts de um usuário
+- `GET /:id` — buscar post por id
+- `DELETE /:id` — deletar post (somente autor) 🔒
+
+**Comments** (`/api/comments`)
+- `POST /post/:post_id` — criar comentário 🔒
+- `GET /post/:post_id` — listar comentários de um post
+- `DELETE /:id` — deletar comentário (somente autor) 🔒
+
+**Likes** (`/api/likes`)
+- `POST /post/:post_id` — curtir/descurtir (toggle) 🔒
+- `GET /post/:post_id/contagem` — contar likes de um post
+
+**Follows** (`/api/follows`)
+- `POST /:following_id` — seguir/deixar de seguir (toggle) 🔒
+- `GET /:user_id/seguidores` — listar seguidores de um usuário
+- `GET /:user_id/seguindo` — listar quem um usuário segue
+
+🔒 = requer token JWT (header `Authorization: Bearer <token>`)
 
 ## 🗂️ Estrutura do banco de dados
 
@@ -62,7 +92,7 @@ server.js             # ponto de entrada da aplicação
 
 1. Clone o repositório
 ```bash
-git clone https://github.com/RuanF2/Post-
+git clone <url-do-repositorio>
 cd post-plus
 ```
 
