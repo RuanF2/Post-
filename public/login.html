@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar · Post+</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="auth-shell">
+
+    <aside class="auth-showcase">
+      <div class="showcase-content">
+        <span class="showcase-tag">sua rede, seu ritmo</span>
+        <h1 class="showcase-title">Tudo o que você posta,<br>num só lugar.</h1>
+        <p class="showcase-subtitle">
+          Post+ reúne o que importa: suas publicações, e em breve,
+          um jeito de acompanhar TikTok e Instagram sem trocar de app.
+        </p>
+      </div>
+    </aside>
+
+    <main class="auth-panel">
+      <div class="auth-card">
+        <div class="brand">
+          <span class="brand-mark">P</span>
+          <span>Post<span class="brand-plus">+</span></span>
+        </div>
+
+        <h2 class="auth-heading">Bem-vindo de volta</h2>
+        <p class="auth-subheading">Entra com sua conta pra ver o que rolou no feed.</p>
+
+        <div class="auth-banner" id="banner"></div>
+
+        <form id="form-login" novalidate>
+          <div class="field" id="field-email">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="voce@email.com" autocomplete="email" required>
+            <span class="field-error">Digite um e-mail válido.</span>
+          </div>
+
+          <div class="field" id="field-senha">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="••••••••" autocomplete="current-password" required>
+            <span class="field-error">Digite sua senha.</span>
+          </div>
+
+          <button type="submit" class="btn-primary" id="btn-entrar">
+            <span class="btn-label">Entrar</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Ainda não tem conta? <a href="register.html">Criar conta</a>
+        </p>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

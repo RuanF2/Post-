@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed · Post+</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="mobile-topbar">
+    <div class="brand">
+      <span class="brand-mark">P</span>
+      <span>Post<span class="brand-plus">+</span></span>
+    </div>
+    <button class="mobile-logout" id="btn-logout-mobile">Sair</button>
+  </div>
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">P</span>
+        <span class="sidebar-label">Post<span class="brand-plus">+</span></span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="feed.html" class="sidebar-link is-active">
+          <span class="icon">⌂</span>
+          <span class="sidebar-label">Início</span>
+        </a>
+        <a href="#" class="sidebar-link" id="link-logout">
+          <span class="icon">⏻</span>
+          <span class="sidebar-label">Sair</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="perfil.html" class="user-chip">
+          <div class="avatar" id="sidebar-avatar">--</div>
+          <div class="sidebar-label">
+            <div class="user-chip-name" id="sidebar-nome">Carregando…</div>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-col">
+      <header class="main-header">
+        <div class="network-switch" id="network-switch" role="tablist" aria-label="Selecionar rede social">
+          <div class="network-switch-indicator" id="switch-indicator"></div>
+          <button class="network-tab is-active" data-network="postplus" role="tab" aria-selected="true">
+            <span class="dot"></span> Post+
+          </button>
+          <button class="network-tab" data-network="tiktok" role="tab" aria-selected="false">
+            <span class="dot"></span> TikTok
+          </button>
+          <button class="network-tab" data-network="instagram" role="tab" aria-selected="false">
+            <span class="dot"></span> Instagram
+          </button>
+        </div>
+      </header>
+
+      <div class="feed-scroll" id="feed-scroll">
+
+        <section class="composer" id="composer">
+          <div class="avatar" id="composer-avatar">--</div>
+          <div class="composer-body">
+            <textarea id="composer-texto" placeholder="O que você tá pensando?" rows="1"></textarea>
+            <div class="composer-footer">
+              <div class="composer-tools">
+                <button class="tool-btn" type="button" title="Em breve: anexar imagem">⎙</button>
+              </div>
+              <button class="btn-post" id="btn-publicar" disabled>Publicar</button>
+            </div>
+          </div>
+        </section>
+
+        <div id="posts-container"></div>
+
+      </div>
+    </main>
+
+    <aside class="aside-right">
+      <div class="aside-card">
+        <div class="aside-title">Sobre o Post+</div>
+        <p style="font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+          As abas TikTok e Instagram mostram como a integração vai
+          funcionar quando estiver disponível — por enquanto, elas
+          exibem só uma prévia do que está por vir.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/feed.js"></script>
+</body>
+</html>

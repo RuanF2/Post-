@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta · Post+</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="auth-shell">
+
+    <aside class="auth-showcase">
+      <div class="showcase-content">
+        <span class="showcase-tag">comece em segundos</span>
+        <h1 class="showcase-title">Sua conta.<br>Suas regras.</h1>
+        <p class="showcase-subtitle">
+          Cadastro rápido, sem enrolação. Escolha um nome, um e-mail
+          e uma senha — o resto a gente cuida.
+        </p>
+      </div>
+    </aside>
+
+    <main class="auth-panel">
+      <div class="auth-card">
+        <div class="brand">
+          <span class="brand-mark">P</span>
+          <span>Post<span class="brand-plus">+</span></span>
+        </div>
+
+        <h2 class="auth-heading">Criar sua conta</h2>
+        <p class="auth-subheading">Leva menos de um minuto.</p>
+
+        <div class="auth-banner" id="banner"></div>
+
+        <form id="form-registro" novalidate>
+          <div class="field" id="field-nome">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como quer ser chamado" autocomplete="name" required>
+            <span class="field-error">Digite seu nome.</span>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="voce@email.com" autocomplete="email" required>
+            <span class="field-error">Digite um e-mail válido.</span>
+          </div>
+
+          <div class="field" id="field-senha">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="mínimo 8 caracteres" autocomplete="new-password" required>
+            <span class="field-error">A senha precisa ter no mínimo 8 caracteres.</span>
+          </div>
+
+          <button type="submit" class="btn-primary" id="btn-criar">
+            <span class="btn-label">Criar conta</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Já tem conta? <a href="login.html">Entrar</a>
+        </p>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

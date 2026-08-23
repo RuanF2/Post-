@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil · Post+</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .profile-header {
+      padding: 32px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .profile-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 26px;
+      color: #061225;
+      flex-shrink: 0;
+    }
+    .profile-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .profile-email {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+    .profile-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 10px;
+    }
+    .profile-stat { font-size: 13px; color: var(--text-secondary); }
+    .profile-stat strong { color: var(--text-primary); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-topbar">
+    <div class="brand"><span class="brand-mark">P</span><span>Post<span class="brand-plus">+</span></span></div>
+    <button class="mobile-logout" id="btn-logout-mobile">Sair</button>
+  </div>
+
+  <div class="app-shell">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">P</span>
+        <span class="sidebar-label">Post<span class="brand-plus">+</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="feed.html" class="sidebar-link">
+          <span class="icon">⌂</span><span class="sidebar-label">Início</span>
+        </a>
+        <a href="#" class="sidebar-link" id="link-logout">
+          <span class="icon">⏻</span><span class="sidebar-label">Sair</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip is-active">
+          <div class="avatar" id="sidebar-avatar">--</div>
+          <div class="sidebar-label">
+            <div class="user-chip-name" id="sidebar-nome">Carregando…</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-col">
+      <div class="profile-header">
+        <div class="profile-avatar" id="profile-avatar">--</div>
+        <div>
+          <div class="profile-name" id="profile-nome">Carregando…</div>
+          <div class="profile-email" id="profile-email">—</div>
+          <div class="profile-stats">
+            <div class="profile-stat"><strong id="stat-posts">0</strong> posts</div>
+            <div class="profile-stat"><strong id="stat-seguidores">0</strong> seguidores</div>
+            <div class="profile-stat"><strong id="stat-seguindo">0</strong> seguindo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feed-scroll" id="posts-container"></div>
+    </main>
+
+    <aside class="aside-right">
+      <div class="aside-card">
+        <div class="aside-title">Sobre esta página</div>
+        <p style="font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+          Aqui aparecem apenas as publicações feitas por você no Post+.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>
