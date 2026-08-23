@@ -4,6 +4,7 @@ const authRoutes = require('./routes/authRoutes');
 const postRoutes = require('./routes/postRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const likeRoutes = require('./routes/likeRoutes');
+const followRoutes = require('./routes/followRoutes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'public', 'uploads
 app.use('/api/auth', authRoutes)
 app.use('/api/comments', commentRoutes);
 app.use('/api/likes', likeRoutes);
+app.use('/api/follows', followRoutes)
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'API rodando com sucesso' });
