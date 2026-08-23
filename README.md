@@ -92,7 +92,7 @@ server.js             # ponto de entrada da aplicação
 
 1. Clone o repositório
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/RuanF2/Post-
 cd post-plus
 ```
 
