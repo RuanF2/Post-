@@ -73,4 +73,16 @@ async function login(req,res) {
     
 }
 
-module.exports = { register, login };
+async function perfil(req, res) {
+    try{
+        const id = req.user_id;
+        const resultado = await userModel.buscarPorId(id);
+        delete resultado.senha_hash;
+        res.status(200).json(resultado);
+    }catch(erro){
+        res.status(400).json({mensagem: "Erro"});
+    }
+
+}
+
+module.exports = { register, login, perfil };
