@@ -14,7 +14,7 @@ async function deixarDeSeguir(follower_id, following_id) {
 
 async function verificarSeguindo(follower_id, following_id) {
     const resultado = await pool.query('SELECT * FROM follows WHERE follower_id = $1 AND following_id = $2', [follower_id, following_id]);
-    const busca = resultado.rows[1];
+    const busca = resultado.rows[0];
     return busca;
 }
 
