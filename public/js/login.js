@@ -46,9 +46,11 @@ form.addEventListener('submit', async (evento) => {
 
   try {
     const resposta = await Api.login(email, senha);
-    
-    
-    Auth.salvarSessao(resposta.token, { email });
+    localStorage.setItem('postplus_token', resposta.token);
+
+    const usuario = await Api.buscarPerfil();
+    Auth.salvarSessao(resposta.token, usuario);
+
     mostrarBanner('Login realizado! Te levando pro feed…', 'sucesso');
     setTimeout(() => { window.location.href = 'feed.html'; }, 500);
   } catch (erro) {

@@ -64,6 +64,9 @@ const Api = {
   login(email, senha) {
     return apiRequest('/auth/login', { method: 'POST', body: { email, senha }, autenticado: false });
   },
+  buscarPerfil() {
+    return apiRequest('/auth/perfil');
+  },
 
   
   criarPost(conteudo, imagem_url) {
