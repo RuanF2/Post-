@@ -1,6 +1,11 @@
+/* ============================================
+   POST+ — Design System
+   ============================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
+  /* Superfícies */
   --bg-deep: #0a0e1a;
   --bg-base: #0d1220;
   --surface-1: #141b2e;
@@ -9,10 +14,12 @@
   --border-soft: rgba(148, 172, 214, 0.12);
   --border-strong: rgba(148, 172, 214, 0.24);
 
+  /* Texto */
   --text-primary: #eef2fb;
   --text-secondary: #9aa8c7;
   --text-tertiary: #5f6d8c;
 
+  /* Acentos */
   --accent-blue: #3d8bff;
   --accent-blue-bright: #5ea1ff;
   --accent-blue-dim: rgba(61, 139, 255, 0.14);
@@ -20,14 +27,17 @@
   --accent-cyan-dim: rgba(94, 234, 212, 0.14);
   --accent-danger: #ff6b6b;
 
+  /* Redes externas (uso comedido, só na pill seletora) */
   --tiktok-accent: #ff3b5c;
   --instagram-accent-1: #ff5f6d;
   --instagram-accent-2: #a03cff;
   --instagram-accent-3: #ffbe4d;
 
+  /* Tipografia */
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
 
+  /* Espaçamento e forma */
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 22px;
@@ -80,12 +90,19 @@ input, textarea { font-family: inherit; }
   }
 }
 
+/* ============================================
+   Utilitários de foco / acessibilidade
+   ============================================ */
+
 :focus-visible {
   outline: 2px solid var(--accent-blue-bright);
   outline-offset: 2px;
   border-radius: 6px;
 }
 
+/* ============================================
+   Logo / marca
+   ============================================ */
 
 .brand {
   display: inline-flex;
@@ -117,6 +134,10 @@ input, textarea { font-family: inherit; }
 .brand-plus {
   color: var(--accent-cyan);
 }
+
+/* ============================================
+   AUTH — Login / Registro
+   ============================================ */
 
 .auth-shell {
   min-height: 100vh;
@@ -360,6 +381,10 @@ input, textarea { font-family: inherit; }
   color: var(--accent-cyan);
 }
 
+/* ============================================
+   APP SHELL — Feed
+   ============================================ */
+
 .app-shell {
   display: grid;
   grid-template-columns: 240px 1fr 300px;
@@ -380,6 +405,7 @@ input, textarea { font-family: inherit; }
   .sidebar { display: none; }
 }
 
+/* --- Sidebar esquerda --- */
 
 .sidebar {
   padding: 28px 20px;
@@ -465,6 +491,8 @@ input, textarea { font-family: inherit; }
   text-overflow: ellipsis;
 }
 
+/* --- Coluna central --- */
+
 .main-col {
   border-right: 1px solid var(--border-soft);
   min-height: 100vh;
@@ -482,6 +510,8 @@ input, textarea { font-family: inherit; }
   display: flex;
   justify-content: center;
 }
+
+/* --- Seletor de rede (network switch) — elemento assinatura --- */
 
 .network-switch {
   position: relative;
@@ -547,6 +577,8 @@ input, textarea { font-family: inherit; }
   gap: 20px;
 }
 
+/* --- Composer (criar post) --- */
+
 .composer {
   background: var(--surface-1);
   border: 1px solid var(--border-soft);
@@ -574,6 +606,43 @@ input, textarea { font-family: inherit; }
 .composer textarea::placeholder { color: var(--text-tertiary); }
 .composer textarea:focus { outline: none; }
 
+.composer-preview {
+  display: none;
+  position: relative;
+  margin-top: 10px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  max-width: 260px;
+}
+
+.composer-preview.is-visible { display: inline-block; }
+
+.composer-preview img {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.composer-preview-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(10, 14, 26, 0.75);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  backdrop-filter: blur(4px);
+}
+
+.composer-preview-remove:hover { background: rgba(10, 14, 26, 0.9); }
+
 .composer-footer {
   display: flex;
   align-items: center;
@@ -598,6 +667,7 @@ input, textarea { font-family: inherit; }
   color: var(--accent-blue-bright);
   font-size: 16px;
   transition: background 0.15s;
+  cursor: pointer;
 }
 
 .tool-btn:hover { background: var(--accent-blue-dim); }
@@ -616,6 +686,7 @@ input, textarea { font-family: inherit; }
 .btn-post:active { transform: scale(0.96); }
 .btn-post:disabled { opacity: 0.4; cursor: not-allowed; }
 
+/* --- Cards de post --- */
 
 .post-card {
   background: var(--surface-1);
@@ -712,6 +783,7 @@ input, textarea { font-family: inherit; }
 
 .action-btn.delete-btn:hover { background: rgba(255, 107, 107, 0.12); color: var(--accent-danger); }
 
+/* --- Comentários --- */
 
 .comments-wrap {
   margin-top: 14px;
@@ -780,6 +852,7 @@ input, textarea { font-family: inherit; }
 
 .comment-send:disabled { opacity: 0.35; }
 
+/* --- Estado vazio / placeholder de rede externa --- */
 
 .empty-state {
   text-align: center;
@@ -805,6 +878,7 @@ input, textarea { font-family: inherit; }
   100% { background-position: 0 50%; }
 }
 
+/* --- Coluna direita --- */
 
 .aside-right {
   padding: 28px 22px;

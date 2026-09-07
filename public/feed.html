@@ -67,9 +67,11 @@
           <div class="avatar" id="composer-avatar">--</div>
           <div class="composer-body">
             <textarea id="composer-texto" placeholder="O que você tá pensando?" rows="1"></textarea>
+            <div class="composer-preview" id="composer-preview"></div>
             <div class="composer-footer">
               <div class="composer-tools">
-                <button class="tool-btn" type="button" title="Em breve: anexar imagem">⎙</button>
+                <label class="tool-btn" for="composer-arquivo" title="Anexar imagem">⎙</label>
+                <input type="file" id="composer-arquivo" accept="image/*" hidden>
               </div>
               <button class="btn-post" id="btn-publicar" disabled>Publicar</button>
             </div>

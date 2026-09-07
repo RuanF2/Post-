@@ -69,8 +69,29 @@ const Api = {
   },
 
   
-  criarPost(conteudo, imagem_url) {
-    return apiRequest('/posts', { method: 'POST', body: { conteudo, imagem_url } });
+  criarPost(conteudo, arquivoImagem) {
+    const dados = new FormData();
+    dados.append('conteudo', conteudo);
+    if (arquivoImagem) dados.append('imagem', arquivoImagem);
+
+    const headers = {};
+    const token = Auth.getToken();
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+    return fetch(`${API_BASE}/posts`, {
+      method: 'POST',
+      headers,
+      body: dados,
+    }).then(async (resposta) => {
+      const texto = await resposta.text();
+      const json = texto ? JSON.parse(texto) : null;
+      if (!resposta.ok) {
+        const erro = new Error((json && json.mensagem) || 'Não foi possível publicar.');
+        erro.status = resposta.status;
+        throw erro;
+      }
+      return json;
+    });
   },
   listarFeed() {
     return apiRequest('/posts/feed');
@@ -154,4 +175,9 @@ function escaparHTML(texto) {
   const div = document.createElement('div');
   div.textContent = texto ?? '';
   return div.innerHTML;
+}
+
+function urlDaImagem(nomeArquivo) {
+  if (!nomeArquivo) return null;
+  return `http://localhost:3000/uploads/${nomeArquivo}`;
 }

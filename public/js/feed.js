@@ -59,24 +59,57 @@ tabs.forEach(tab => {
 
 window.addEventListener('load', () => posicionarIndicador(tabs[0], false));
 
+const composerArquivo = document.getElementById('composer-arquivo');
+const composerPreview = document.getElementById('composer-preview');
+let arquivoSelecionado = null;
+
+function atualizarEstadoBotaoPublicar() {
+  const temTexto = composerTexto.value.trim().length > 0;
+  btnPublicar.disabled = !temTexto && !arquivoSelecionado;
+}
+
 composerTexto.addEventListener('input', () => {
-  btnPublicar.disabled = composerTexto.value.trim().length === 0;
+  atualizarEstadoBotaoPublicar();
   composerTexto.style.height = 'auto';
   composerTexto.style.height = `${composerTexto.scrollHeight}px`;
 });
 
+composerArquivo.addEventListener('change', () => {
+  const arquivo = composerArquivo.files[0];
+  if (!arquivo) return;
+
+  arquivoSelecionado = arquivo;
+  const urlLocal = URL.createObjectURL(arquivo);
+  composerPreview.innerHTML = `
+    <img src="${urlLocal}" alt="Prévia da imagem selecionada">
+    <button type="button" class="composer-preview-remove" id="composer-preview-remove">✕</button>
+  `;
+  composerPreview.classList.add('is-visible');
+  document.getElementById('composer-preview-remove').addEventListener('click', limparImagemSelecionada);
+  atualizarEstadoBotaoPublicar();
+});
+
+function limparImagemSelecionada() {
+  arquivoSelecionado = null;
+  composerArquivo.value = '';
+  composerPreview.innerHTML = '';
+  composerPreview.classList.remove('is-visible');
+  atualizarEstadoBotaoPublicar();
+}
+
 btnPublicar.addEventListener('click', async () => {
   const conteudo = composerTexto.value.trim();
-  if (!conteudo) return;
+  if (!conteudo && !arquivoSelecionado) return;
 
   btnPublicar.disabled = true;
   btnPublicar.textContent = 'Publicando…';
 
   try {
-    const novoPost = await Api.criarPost(conteudo, null);
+    const novoPost = await Api.criarPost(conteudo, arquivoSelecionado);
     composerTexto.value = '';
     composerTexto.style.height = 'auto';
-    
+    limparImagemSelecionada();
+
     const card = criarCardDePost({ ...novoPost, autor_nome: usuario?.nome || usuario?.email });
     postsContainer.prepend(card);
     mostrarToast('Post publicado!', 'success');
@@ -84,7 +117,7 @@ btnPublicar.addEventListener('click', async () => {
     mostrarToast(erro.message, 'error');
   } finally {
     btnPublicar.textContent = 'Publicar';
-    btnPublicar.disabled = composerTexto.value.trim().length === 0;
+    atualizarEstadoBotaoPublicar();
   }
 });
 
@@ -154,7 +187,7 @@ function criarCardDePost(post) {
       </div>
     </div>
     <div class="post-content">${escaparHTML(post.conteudo)}</div>
-    ${post.imagem_url ? `<div class="post-media"><img src="${escaparHTML(post.imagem_url)}" alt="" loading="lazy"></div>` : ''}
+    ${post.imagem_url ? `<div class="post-media"><img src="${escaparHTML(urlDaImagem(post.imagem_url))}" alt="" loading="lazy"></div>` : ''}
     <div class="post-actions">
       <button class="action-btn like-btn" data-role="like">
         <span class="icon">♡</span> <span data-role="like-count">curtir</span>

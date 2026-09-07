@@ -2,7 +2,8 @@ const postModel = require('../models/postModel');
 
 async function criarPost(req, res) {
     try{
-        const {conteudo, imagem_url} = req.body;
+        const imagem_url = req.file ? req.file.filename : null;
+        const {conteudo} = req.body;
         const userId = req.user_id;
 
         const novoPost = await postModel.criarPost(userId, conteudo, imagem_url);
