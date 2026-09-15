@@ -37,3 +37,20 @@ following_id INTEGER REFERENCES users(id) NOT NULL,
 criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 UNIQUE (follower_id, following_id)
 );
+
+CREATE TABLE conversations(
+id SERIAL PRIMARY KEY,
+usuario1_id INTEGER REFERENCES users(id) NOT NULL,
+usuario2_id INTEGER REFERENCES users(id) NOT NULL,
+criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+UNIQUE (usuario1_id, usuario2_id)
+);
+
+CREATE TABLE messages (
+id SERIAL PRIMARY KEY,
+conversation_id INTEGER REFERENCES conversations(id) NOT NULL,
+remetente_id INTEGER REFERENCES users(id) NOT NULL,
+conteudo TEXT NOT NULL,
+lida BOOLEAN DEFAULT false NOT NULL,
+criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

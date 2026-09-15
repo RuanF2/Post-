@@ -4,19 +4,21 @@ Rede social simplificada, desenvolvida como projeto de estudo full-stack, com fo
 
 ## ✅ Status do projeto
 
-Backend completo e testado. Frontend em desenvolvimento.
+Backend e frontend funcionais e integrados.
 
 - [x] Estrutura de pastas do projeto
 - [x] Modelagem do banco de dados (5 tabelas)
 - [x] Models: `users`, `posts`, `comments`, `likes`, `follows`
 - [x] Middleware de autenticação (verificação de JWT)
-- [x] `authController` (registro e login — testado)
-- [x] `postController` + `postRoutes` (CRUD completo de posts, com verificação de autoria — testado)
+- [x] Middleware de upload de imagem (Multer)
+- [x] `authController` (registro, login e perfil do usuário logado — testado)
+- [x] `postController` + `postRoutes` (CRUD completo de posts, com upload de imagem e verificação de autoria — testado)
 - [x] `commentController` + `commentRoutes` (criar, listar por post, deletar — com verificação de autoria — testado)
 - [x] `likeController` + `likeRoutes` (toggle de curtir/descurtir, contagem de likes — testado)
 - [x] `followController` + `followRoutes` (toggle de seguir/deixar de seguir, validação de auto-seguir, listar seguidores/seguindo — testado)
 - [x] **Backend 100% funcional, testado ponta a ponta via Insomnia**
-- [ ] Frontend
+- [x] Frontend (HTML/CSS/JS puro): login, registro, feed, perfil
+- [x] Posts com imagem no frontend (seleção com prévia, upload real)
 - [ ] Deploy
 
 ## 🛠️ Tecnologias
@@ -26,6 +28,7 @@ Backend completo e testado. Frontend em desenvolvimento.
 - **JWT (jsonwebtoken)** — autenticação
 - **bcrypt** — hash de senhas
 - **Multer** — upload de imagens
+- **HTML, CSS e JavaScript puro** — frontend (sem frameworks)
 
 ## 📦 Funcionalidades planejadas
 
@@ -41,9 +44,10 @@ Backend completo e testado. Frontend em desenvolvimento.
 **Auth** (`/api/auth`)
 - `POST /register` — cadastro de usuário
 - `POST /login` — autenticação, retorna token JWT
+- `GET /perfil` — dados do usuário logado (sem a senha) 🔒
 
 **Posts** (`/api/posts`)
-- `POST /` — criar post 🔒
+- `POST /` — criar post, aceita imagem via `multipart/form-data` (campo `imagem`) 🔒
 - `GET /feed` — listar todos os posts (mais recentes primeiro)
 - `GET /usuario/:user_id` — listar posts de um usuário
 - `GET /:id` — buscar post por id
