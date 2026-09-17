@@ -6,8 +6,6 @@ async function criarConversa(usuario1_id, usuario2_id) {
     return busca;
 }
 
-
-
 async function buscarConversaEntre(usuario1_id, usuario2_id) {
     const resultado = await pool.query('SELECT * FROM conversations WHERE (usuario1_id = $1 AND usuario2_id = $2) OR (usuario1_id = $2 AND usuario2_id = $1)', [usuario1_id, usuario2_id]);
     const busca = resultado.rows[0];
